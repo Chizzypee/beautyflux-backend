@@ -2,12 +2,20 @@ const { model, Schema} = require("mongoose")
 
 const ProfileSchema = new Schema ({
     imageId:{
-        type: string
+        type: String,
+        required: true
     },
     imageUrl:{
-        type: string
+        type: String,
+        required: true
+    },
+    user:{
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: "Account",
     },
 },  {timestamps: true}
 );
-const AccountModel = model("Account", ProfileSchema)
-module.exports = AccountModel;
+
+const ProfileModel = model("Profile", ProfileSchema)
+module.exports = ProfileModel;

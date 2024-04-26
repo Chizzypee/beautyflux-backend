@@ -2,9 +2,18 @@ const cloudinary = require("cloudinary").v2;
 require("dotenv").config()
 
 cloudinary.config({
-    CLOUD_NAME: process.env.CLOUD_NAME,
-    API_KEY: process.env.CLOUD_KEY,
-    API_SECRET: process.env.CLOUD_KEY_SECRET
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_KEY,
+    api_secret: process.env.CLOUD_KEY_SECRET,
+    secure: true,
 });
 
-module.exports = {cloudinary};
+const assets = {
+    Upload_presets: "beautyflux",
+    Folder: "bflux_cloudinay"
+}
+
+module.exports = {
+    cloudinary,
+    assets
+};

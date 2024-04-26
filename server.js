@@ -6,7 +6,11 @@ const { errorHandler, notFound } = require("./src/middlewares/error.middleware")
 app.use("/api/v1", router);
 app.all("*", notFound);
 app.use(errorHandler);
+const {engine} = require("express-handlebars")
 
+app.engine('.handlebars', engine({extname: '.handlebars'}));
+app.set('view engine', '.handlebars');
+app.set('views', '../src/views');
 
 app.listen(config.PORT, async()=>{
     try{
